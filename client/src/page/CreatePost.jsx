@@ -6,6 +6,8 @@ import { getRandomPrompt } from '../utils';
 import { FormField, Loader } from '../components';
 
 const CreatePost = () => {
+  //allow us to navigate back to the home page once the post is created
+  
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -28,7 +30,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        const response = await fetch('https://dalle-arbb.onrender.com/api/v1/dalle', {
+        const response = await fetch('https://localhost:8080/api/v1/dalle', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -56,7 +58,7 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch('https://dalle-arbb.onrender.com/api/v1/post', {
+        const response = await fetch('https://localhost:8080/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
